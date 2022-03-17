@@ -10,6 +10,12 @@ body {
     margin-right: auto;
 }
 
+#close {
+    position: absolute;
+    top: 0vw;
+    right: 0vw;
+}
+
 #container {
     background-color: white;
     margin: auto;
@@ -17,10 +23,15 @@ body {
     border: solid 1px gainsboro;
     text-align: center;
     padding: 20px;
+    position: relative;
 }
 
 #btn {
     display: block;
     margin: auto;
     margin-top: 12px;
+}
+
+#countryCode {
+    color: #ececec;
 }

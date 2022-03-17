@@ -1,0 +1,3 @@
+function exitApp() {
+    Ayoba.finish();
+}

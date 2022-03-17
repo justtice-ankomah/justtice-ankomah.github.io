@@ -1,9 +1,25 @@
 body {
-    background-color: #c61919;
+    background-color: #f2f2f2;
+    margin: auto;
 }
 
 #logo {
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+#container {
+    background-color: white;
+    margin: auto;
+    width: 80%;
+    border: solid 1px gainsboro;
+    text-align: center;
+    padding: 20px;
+}
+
+#btn {
+    display: block;
+    margin: auto;
+    margin-top: 12px;
 }

@@ -5,7 +5,10 @@ function exitApp() {
 }
 
 function getCountry() {
-    var country = Ayoba.getCountry();
-    document.getElementById("message").value = country
+    alert("getting country");
+    var countryCode = Ayoba.getCountry();
+    document.getElementById("countryCode").innerText = countryCode
     return country
 }
+
+getCountry();

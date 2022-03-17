@@ -16,20 +16,22 @@
     <img id="logo" src="images/logo.png" style="width:72px;" />
 
 
-    <div id="container">
+    <div id="container" onload="loadUserInfo()">
         <!-- close image-->
         <img id="close" onclick="exitApp()" src="images/close.png" style="width:15px;" />
         <input type="text" id="message">
         <button id="btn" onclick="getCountry()">Get Country</button>
         <button id="btn" onclick="getUserPhoneNumber()">Get Phone Number</button>
+        <button id="btn" onclick="getLanguage()">Get Language</button>
         <button id="btn">Send Message</button>
 
-        <p>Your Country Code is: <span id="countryCode"></span> </p>
-        <p>Your Your Number: <span id="number"></span> </p>
+        <p style="text-align: left;">Your Country Code is: <span id="countryCode"></span> </p>
+        <p style="text-align: left;">Your Your Number: <span id=" number "></span> </p>
+        <p style="text-align: left;">Your Language: <span id="language"></span> </p>
     </div>
 
 
 </body>
-<script src="index.js"></script>
+<script src="index.js "></script>
 
 </html>

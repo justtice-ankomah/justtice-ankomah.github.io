@@ -32,7 +32,8 @@ body {
     margin-top: 12px;
 }
 
-#countryCode {
+#countryCode,
+#language {
     color: #878787;
 }
 

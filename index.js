@@ -15,6 +15,7 @@ function getCountry() {
     return country
 }
 
+// function to get the user PhoneNumber
 function getUserPhoneNumber() {
     // Call this to get the user phone Number
     // it returns a String
@@ -22,6 +23,16 @@ function getUserPhoneNumber() {
     document.getElementById("number").innerText = msisdn
 }
 
+// Function to get the user language
+function getLanguage() {
+    // Call this to get the 
+    // Function to get the
+    // it returns a String
+    var languageCode = Ayoba.getLanguage();
+    document.getElementById("language").innerText = languageCode;
+}
 
+
+getLanguage();
 getCountry();
 getUserPhoneNumber();

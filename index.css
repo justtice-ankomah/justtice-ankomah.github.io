@@ -1,5 +1,10 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
 body {
-    background-color: #f2f2f2;
+    background-color: #ffdada;
     margin: auto;
     padding-top: 5px;
 }
@@ -12,7 +17,7 @@ body {
 
 #close {
     position: absolute;
-    top: 1vw;
+    top: 2vw;
     right: 1vw;
 }
 
@@ -22,8 +27,14 @@ body {
     width: 80%;
     border: solid 1px gainsboro;
     text-align: center;
-    padding: 20px;
+    /* padding: 20px;
+    padding-top: 0px; */
     position: relative;
+    height: 500px;
+}
+
+#profile_container {
+    /* display: none; */
 }
 
 #btn {
@@ -39,4 +50,61 @@ body {
 
 #number {
     color: #878787;
+}
+
+#navbar_container {
+    background-color: green;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    margin-bottom: 7px;
+    box-sizing: border-box;
+    box-shadow: darkgreen 0px 1px 3px;
+}
+
+.nav_link {
+    color: white;
+    font-weight: bold;
+    padding: 5px;
+}
+
+
+/* chat */
+
+.nav_link :active {
+    text-decoration: underline;
+}
+
+#chat_container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+#chageimage_container {
+    background-color: green;
+    border-radius: 50%;
+    padding: 10px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    align-self: center;
+}
+
+#chatman {
+    display: block;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+}
+
+#contact_container {
+    margin-left: 10px;
+}
+
+#username {}
+
+#usernumber {
+    color: #6d6e6d;
+    text-align: left;
 }

@@ -36,3 +36,15 @@ function getLanguage() {
 getLanguage();
 getCountry();
 getUserPhoneNumber();
+
+function hideProfile() {
+    document.getElementById("profile_container").style.display = "none";
+    // var chat = document.getElementById("chat_container").style.display = "block";
+
+}
+
+function hideChat() {
+    document.getElementById("chat_container").style.display = "none";
+    // var profile = document.getElementById("profile_container").style.display = "block";
+
+}

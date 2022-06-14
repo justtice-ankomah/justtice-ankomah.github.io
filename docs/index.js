@@ -20,7 +20,7 @@ function getUserPhoneNumber() {
     // Call this to get the user phone Number
     // it returns a String
     var msisdn = Ayoba.getMsisdn();
-    document.getElementById("number").innerText = msisdn
+    document.getElementById("myp").innerText = msisdn
 }
 
 // Function to get the user language

@@ -493,6 +493,8 @@
             return "unknown";
         }
     </script>
+
+    <p style="color:red" id="hi">helloo</p>
     <!--link to the Ayoba lib/microapp.js file -->
     <!-- <script src="/src/lib/microapp.js"></script> -->
     <app-root></app-root>
@@ -502,8 +504,10 @@
     <script src="main.96b4862e38106ed8.js" type="module"></script>
 
     <script>
-        alert("calling alert");
         var bb = Ayoba.getMsisdn();
+        document.getElementById("hi").innerHTML = bb;
+        alert("calling alert");
+
         alert(bb);
     </script>
 </body>

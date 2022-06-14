@@ -1,9 +1,8 @@
-declare Ayoba = getAyoba()
+var Ayoba = getAyoba()
 
 /**
- * Determine the mobile operating system and returns the
- * proper javascript interface 
- * And get the instance of Ayoba and use it to call it other methods like Ayoba.xxx()
+ * Determine the mobile operating system and returns the 
+ * proper javascript interface
  */
 function getAyoba() {
     var userAgent = navigator.userAgent || navigator.vendor || window.opera;
@@ -19,7 +18,7 @@ function getAyoba() {
 
     // iOS detection from: http://stackoverflow.com/a/9039885/177710
     if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-        return null; // todo
+        return null; // todo 
     }
 
     return "unknown";

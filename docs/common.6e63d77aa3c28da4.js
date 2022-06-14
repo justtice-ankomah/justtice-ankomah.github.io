@@ -121,9 +121,9 @@
                         // this.bb = document.getElementById("justilato")
                     }
                 }
-                return s.thirdParthId = Ayoba.getMsisdn(),
+                return s.thirdParthId = null,
                     s.userProfileImgUrl = null,
-                    s.userFirstName = Ayoba.getMsisdn(),
+                    s.userFirstName = null,
                     s.userLastName = null,
                     s.userBio = null,
                     s.userphoneNumber = null, s

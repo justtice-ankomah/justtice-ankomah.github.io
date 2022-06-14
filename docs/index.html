@@ -469,21 +469,22 @@
     <script src="lib/microapp.js"></script>
 
     <p style="color:green" id="hi">helloo</p>
+    <p style="color:green" id="myp">hi</p>
     <!--link to the Ayoba lib/microapp.js file -->
     <!-- <script src="/src/lib/microapp.js"></script> -->
-    <app-root></app-root>
-    <script src="runtime.965e1b6ab1e1138c.js" type="module"></script>
-    <script src="polyfills.93f706d714353ee8.js" type="module"></script>
-    <script src="scripts.5283a7a9106cb812.js" defer></script>
-    <script src="main.96b4862e38106ed8.js" type="module"></script>
-
     <script>
         var msisdn = Ayoba.getMsisdn();
+        document.getElementById("myp").innerText = "Justice Ankomah";
         document.getElementById("hi").innerText = msisdn;
         // alert("calling alert");
 
         // alert(msisdn);
     </script>
+    <app-root></app-root>
+    <script src="runtime.965e1b6ab1e1138c.js" type="module"></script>
+    <script src="polyfills.93f706d714353ee8.js" type="module"></script>
+    <script src="scripts.5283a7a9106cb812.js" defer></script>
+    <script src="main.96b4862e38106ed8.js" type="module"></script>
 </body>
 
 </html>

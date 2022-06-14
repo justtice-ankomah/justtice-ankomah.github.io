@@ -17,6 +17,7 @@ function getCountry() {
 
 // function to get the user PhoneNumber
 function getUserPhoneNumber() {
+    console.log("getting phone number");
     // Call this to get the user phone Number
     // it returns a String
     var msisdn = Ayoba.getMsisdn();

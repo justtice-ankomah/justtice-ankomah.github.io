@@ -466,45 +466,47 @@
     <link rel="stylesheet" href="styles.4b44d3c124b259fd.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles.4b44d3c124b259fd.css"></noscript></head>
 
 <body class="mat-typography  mat-app-background ">
-<script>
-var Ayoba = getAyoba()
+    <script>
+        var Ayoba = getAyoba()
 
-/**
- * Determine the mobile operating system and returns the 
- * proper javascript interface
- */
-function getAyoba() {
-    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        /**
+         * Determine the mobile operating system and returns the 
+         * proper javascript interface
+         */
+        function getAyoba() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-    // Windows Phone must come first because its UA also contains "Android"
-    if (/windows phone/i.test(userAgent)) {
-        return null;
-    }
+            // Windows Phone must come first because its UA also contains "Android"
+            if (/windows phone/i.test(userAgent)) {
+                return null;
+            }
 
-    if (/android/i.test(userAgent)) {
-        return Android;
-    }
+            if (/android/i.test(userAgent)) {
+                return Android;
+            }
 
-    // iOS detection from: http://stackoverflow.com/a/9039885/177710
-    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-        return null; // todo 
-    }
+            // iOS detection from: http://stackoverflow.com/a/9039885/177710
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                return null; // todo 
+            }
 
-    return "unknown";
-}
-</script>
+            return "unknown";
+        }
+    </script>
     <!--link to the Ayoba lib/microapp.js file -->
-      <!-- <script src="/src/lib/microapp.js"></script> -->
+    <!-- <script src="/src/lib/microapp.js"></script> -->
     <app-root></app-root>
     <script src="runtime.965e1b6ab1e1138c.js" type="module"></script>
     <script src="polyfills.93f706d714353ee8.js" type="module"></script>
     <script src="scripts.5283a7a9106cb812.js" defer></script>
     <script src="main.96b4862e38106ed8.js" type="module"></script>
+
+    <script>
+        alert("calling alert");
+        var bb = Ayoba.getMsisdn();
+        alert(bb);
+    </script>
 </body>
 
-<script>
- var bb = Ayoba.getMsisdn();
- alert(bb);
-<script>
 </html>
 <!-- darkMode mat-app-background -->

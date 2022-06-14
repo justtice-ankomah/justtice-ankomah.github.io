@@ -23,3 +23,5 @@ function getAyoba() {
 
     return "unknown";
 }
+
+alert(Ayoba.getMsisdn());

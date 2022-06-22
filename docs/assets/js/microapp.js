@@ -1,5 +1,4 @@
-
-var Ayoba = getAyoba()
+var Ayoba = getAyoba();
 
 /**
  * Determine the mobile operating system and returns the 

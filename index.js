@@ -58,3 +58,8 @@ function getContacts() {
     var contactsJson = Ayoba.getContacts();
     document.getElementById("countryCode").innerText = contactsJson
 }
+
+function onProfileChanged(nickname, avatarPath) {
+    document.getElementById("countryCode").innerText = nickname
+    document.getElementById("number").src = avatarPath
+}

@@ -48,3 +48,13 @@ function hideChat() {
     // var profile = document.getElementById("profile_container").style.display = "block";
 
 }
+
+function getContactName() {
+    var contactName = getURLParameter("contactname")
+    document.getElementById("countryCode").innerText = contactName
+}
+
+function getContacts() {
+    var contactsJson = Ayoba.getContacts();
+    document.getElementById("countryCode").innerText = contactsJson
+}

@@ -10,7 +10,6 @@
     <!-- <script src="assets/js/microapp.js"></script> -->
     <script>
         var Ayoba = getAyoba();
-
         /**
          * Determine the mobile operating system and returns the 
          * proper javascript interface
@@ -35,10 +34,29 @@
             return "unknown";
         }
 
+        var pImageUrl;
+        var uNickName;
+
         function onProfileChanged(nickname, avatarPath) {
-            document.getElementById("nicknameInputText").value = nickname
-            document.getElementById("avatarImage").src = avatarPath
+            uNickName = nickname
+            pImageUrl = avatarPath
         }
+
+        function onAvatarChanged(avatarPath) {
+            pImageUrl = avatarPath
+        }
+
+        /*
+         * The Ayoba native interface calls this method every time
+         * the user nickname changes : in discovery context
+         */
+        function onNicknameChanged(nickname) {
+            uNickName = nickname
+        }
+        document.write(`<br/>`);
+        document.write(`<br/>`);
+        document.write(`<br/>`);
+        document.write(`inside first script ${uNickName +' hi '+ pImageUrl} <br/>`);
     </script>
     <script>
         var profileImageUrl;
@@ -58,15 +76,14 @@
          * the user nickname changes : in discovery context
          */
         function onNicknameChanged(nickname) {
-            profileImageUrl = nickname
+            userNickName = nickname
         }
-
-        document.write("change to user NickName");
+        document.write(`inside second script ${profileImageUrl +' hi '+ userNickName}`);
     </script>
 
     <!--link to the Ayoba lib/microapp.js file -->
     <!-- <script src="src/lib/microapp.js"></script> -->
     <app-root></app-root>
-<script src="runtime.efa156907265b46c.js" type="module"></script><script src="polyfills.d78e189be8ac9c8f.js" type="module"></script><script src="scripts.6ff28f6030a351e2.js" defer></script><script src="main.cfbbf51e2a8fa6f7.js" type="module"></script>
+<script src="runtime.efa156907265b46c.js" type="module"></script><script src="polyfills.d78e189be8ac9c8f.js" type="module"></script><script src="scripts.6ff28f6030a351e2.js" defer></script><script src="main.9d682021bd5ebea9.js" type="module"></script>
 
 </body></html>

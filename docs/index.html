@@ -13,23 +13,6 @@
 </head>
 <script src="lib/microapp.js"></script>
 <script>
-    /* *********************************************************************
-     * Microapp operational examples. Follow the docs for more detailed info
-     * ******************************************************************** */
-
-    function getContactName() {
-        var contactName = getURLParameter("contactname")
-        document.getElementById("inputText").value = contactName
-        return contactName
-    }
-
-    function getContacts() {
-        var contactsJson = Ayoba.getContacts();
-        document.getElementById("inputText").value = contactsJson
-        return contactsJson;
-    }
-
-
     /*
      * The Ayoba native interface calls this method every time
      * the user profile changes (nickname or avatar) : in chat context
@@ -39,17 +22,17 @@
         document.getElementById("avatarImage").src = avatarPath
     }
 
-    function onAvatarChanged(avatarPath) {
-        document.getElementById("avatarImage").src = avatarPath
-    }
+    // function onAvatarChanged(avatarPath) {
+    //     document.getElementById("avatarImage").src = avatarPath
+    // }
 
     /*
      * The Ayoba native interface calls this method every time
      * the user nickname changes : in discovery context
      */
-    function onNicknameChanged(nickname) {
-        document.getElementById("nicknameInputText").value = nickname
-    }
+    // function onNicknameChanged(nickname) {
+    //     document.getElementById("nicknameInputText").value = nickname
+    // }
 </script>
 
 <body style="background-color:#1565c0;">
@@ -57,14 +40,7 @@
         <font color="#ffc107">Example Micro App - Mid Screen</font>
     </center>
     <br />
-    <div style="text-align:center;">
-        <input type="text" id="inputText">
-    </div>
     <br />
-    <div style="text-align:center;">
-        Location:
-        <input type="text" id="locationInputText">
-    </div>
     <div style="text-align:center;">
         Profile:
         <input type="text" id="nicknameInputText">
@@ -80,14 +56,8 @@
     <img style="width:72px;" id="pictureRetrieved" />
     <br />
 
-    <div style="text-align:center;">
-        <input type="text" id="inputTextLat" size="10">
-        <input type="text" id="inputTextLon" size="10">
-    </div>
 
-    <div style="text-align:center;">
-        <input type="button" value="Get ContactName" onClick="getContactName()" />
-    </div>
+
 
 
 

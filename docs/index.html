@@ -17,25 +17,25 @@
      * The Ayoba native interface calls this method every time
      * the user profile changes (nickname or avatar) : in chat context
      */
-    function onProfileChanged(nickname, avatarPath) {
-        document.getElementById("nicknameInputText").value = nickname
-        document.getElementById("avatarImage").src = avatarPath
-    }
-
-    // function onAvatarChanged(avatarPath) {
+    // function onProfileChanged(nickname, avatarPath) {
+    //     document.getElementById("nicknameInputText").value = nickname
     //     document.getElementById("avatarImage").src = avatarPath
     // }
+
+    function onAvatarChanged(avatarPath) {
+        document.getElementById("avatarImage").src = avatarPath
+    }
 
     /*
      * The Ayoba native interface calls this method every time
      * the user nickname changes : in discovery context
      */
-    // function onNicknameChanged(nickname) {
-    //     document.getElementById("nicknameInputText").value = nickname
-    // }
+    function onNicknameChanged(nickname) {
+        document.getElementById("nicknameInputText").value = nickname
+    }
 </script>
 
-<body style="background-color:#1565c0;">
+<body style="background-color:#dba9d0;">
     <center>
         <font color="#ffc107">Example Micro App - Mid Screen</font>
     </center>

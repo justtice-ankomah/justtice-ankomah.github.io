@@ -33,57 +33,12 @@
 
             return "unknown";
         }
-
-        var pImageUrl;
-        var uNickName;
-
-        function onProfileChanged(nickname, avatarPath) {
-            uNickName = nickname
-            pImageUrl = avatarPath
-        }
-
-        function onAvatarChanged(avatarPath) {
-            pImageUrl = avatarPath
-        }
-
-        /*
-         * The Ayoba native interface calls this method every time
-         * the user nickname changes : in discovery context
-         */
-        function onNicknameChanged(nickname) {
-            uNickName = nickname
-        }
-        document.write(`<br/>`);
-        document.write(`<br/>`);
-        document.write(`<br/>`);
-        document.write(`inside first script ${uNickName +' hi '+ pImageUrl} <br/>`);
-    </script>
-    <script>
-        var profileImageUrl;
-        var userNickName;
-
-        function onProfileChanged(nickname, avatarPath) {
-            userNickName = nickname
-            profileImageUrl = avatarPath
-        }
-
-        function onAvatarChanged(avatarPath) {
-            profileImageUrl = avatarPath
-        }
-
-        /*
-         * The Ayoba native interface calls this method every time
-         * the user nickname changes : in discovery context
-         */
-        function onNicknameChanged(nickname) {
-            userNickName = nickname
-        }
-        document.write(`inside second script ${profileImageUrl +' hi '+ userNickName}`);
     </script>
 
     <!--link to the Ayoba lib/microapp.js file -->
     <!-- <script src="src/lib/microapp.js"></script> -->
     <app-root></app-root>
-<script src="runtime.efa156907265b46c.js" type="module"></script><script src="polyfills.d78e189be8ac9c8f.js" type="module"></script><script src="scripts.6ff28f6030a351e2.js" defer></script><script src="main.9d682021bd5ebea9.js" type="module"></script>
+
+<script src="runtime.efa156907265b46c.js" type="module"></script><script src="polyfills.d78e189be8ac9c8f.js" type="module"></script><script src="scripts.6ff28f6030a351e2.js" defer></script><script src="main.72d1b671118f634b.js" type="module"></script>
 
 </body></html>

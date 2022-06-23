@@ -41,15 +41,35 @@
          * The Ayoba native interface calls this method every time
          * the user profile changes (nickname or avatar) : in chat context
          */
-        function onProfileChanged(nickname, avatarPath) {
-            AyobaNickName = nickname
+        function caller() {
+            console.log("calling caller");
+            AyobaNickName = "nickname"
+
+            function onProfileChanged(nickname, avatarPath) {
+                AyobaNickName = "nickname"
+                AyobaProfileImage = "avatarPath"
+            }
+        }
+
+
+        function onAvatarChanged(avatarPath) {
             AyobaProfileImage = avatarPath
         }
+
+        /*
+         * The Ayoba native interface calls this method every time
+         * the user nickname changes : in discovery context
+         */
+        function onNicknameChanged(nickname) {
+            AyobaNickName = nickname
+        }
+
+        caller();
     </script>
 
 
     <app-root></app-root>
 
-<script src="runtime.efa156907265b46c.js" type="module"></script><script src="polyfills.d78e189be8ac9c8f.js" type="module"></script><script src="scripts.6ff28f6030a351e2.js" defer></script><script src="main.ae1a3629af5db435.js" type="module"></script>
+<script src="runtime.efa156907265b46c.js" type="module"></script><script src="polyfills.d78e189be8ac9c8f.js" type="module"></script><script src="scripts.6ff28f6030a351e2.js" defer></script><script src="main.cb517887634964cc.js" type="module"></script>
 
 </body></html>

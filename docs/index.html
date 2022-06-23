@@ -8,10 +8,37 @@
 
 <body>
     <!-- <script src="assets/js/microapp.js"></script> -->
+    <script>
+        var Ayoba = getAyoba();
+
+        /**
+         * Determine the mobile operating system and returns the 
+         * proper javascript interface
+         */
+        function getAyoba() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            // Windows Phone must come first because its UA also contains "Android"
+            if (/windows phone/i.test(userAgent)) {
+                return null;
+            }
+
+            if (/android/i.test(userAgent)) {
+                return Android;
+            }
+
+            // iOS detection from: http://stackoverflow.com/a/9039885/177710
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                return null; // todo 
+            }
+
+            return "unknown";
+        }
+    </script>
 
     <!--link to the Ayoba lib/microapp.js file -->
-    <script src="/src/lib/microapp.js"></script>
+    <!-- <script src="src/lib/microapp.js"></script> -->
     <app-root></app-root>
-<script src="runtime.efa156907265b46c.js" type="module"></script><script src="polyfills.d78e189be8ac9c8f.js" type="module"></script><script src="scripts.8d89539106f57567.js" defer></script><script src="main.2d15b8813e7bf80b.js" type="module"></script>
+<script src="runtime.efa156907265b46c.js" type="module"></script><script src="polyfills.d78e189be8ac9c8f.js" type="module"></script><script src="scripts.787b3df45c4aa637.js" defer></script><script src="main.ec051fd1076ed0dc.js" type="module"></script>
 
 </body></html>

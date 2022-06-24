@@ -1,301 +1,72 @@
-<!DOCTYPE html>
-<html>
-
-<head>
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Justiceapp</title>
+    <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        img {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    </style>
-</head>
-<script src="lib/microapp.js"></script>
-<script>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+<style>@charset "UTF-8";:root{--bs-blue:#0d6efd;--bs-indigo:#6610f2;--bs-purple:#6f42c1;--bs-pink:#d63384;--bs-red:#dc3545;--bs-orange:#fd7e14;--bs-yellow:#ffc107;--bs-green:#198754;--bs-teal:#20c997;--bs-cyan:#0dcaf0;--bs-white:#fff;--bs-gray:#6c757d;--bs-gray-dark:#343a40;--bs-gray-100:#f8f9fa;--bs-gray-200:#e9ecef;--bs-gray-300:#dee2e6;--bs-gray-400:#ced4da;--bs-gray-500:#adb5bd;--bs-gray-600:#6c757d;--bs-gray-700:#495057;--bs-gray-800:#343a40;--bs-gray-900:#212529;--bs-primary:#0d6efd;--bs-secondary:#6c757d;--bs-success:#198754;--bs-info:#0dcaf0;--bs-warning:#ffc107;--bs-danger:#dc3545;--bs-light:#f8f9fa;--bs-dark:#212529;--bs-primary-rgb:13,110,253;--bs-secondary-rgb:108,117,125;--bs-success-rgb:25,135,84;--bs-info-rgb:13,202,240;--bs-warning-rgb:255,193,7;--bs-danger-rgb:220,53,69;--bs-light-rgb:248,249,250;--bs-dark-rgb:33,37,41;--bs-white-rgb:255,255,255;--bs-black-rgb:0,0,0;--bs-body-color-rgb:33,37,41;--bs-body-bg-rgb:255,255,255;--bs-font-sans-serif:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";--bs-font-monospace:SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;--bs-gradient:linear-gradient(180deg, rgba(255, 255, 255, .15), rgba(255, 255, 255, 0));--bs-body-font-family:var(--bs-font-sans-serif);--bs-body-font-size:1rem;--bs-body-font-weight:400;--bs-body-line-height:1.5;--bs-body-color:#212529;--bs-body-bg:#fff}*,:after,:before{box-sizing:border-box}@media (prefers-reduced-motion:no-preference){:root{scroll-behavior:smooth}}body{margin:0;font-family:var(--bs-body-font-family);font-size:var(--bs-body-font-size);font-weight:var(--bs-body-font-weight);line-height:var(--bs-body-line-height);color:var(--bs-body-color);text-align:var(--bs-body-text-align);background-color:var(--bs-body-bg);-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}</style><link rel="stylesheet" href="styles.8d58886b09b054e5.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles.8d58886b09b054e5.css"></noscript></head>
 
-    /* *********************************************************************
-     * Microapp operational examples. Follow the docs for more detailed info
-     * ******************************************************************** */
+<body>
+    <!-- <script src="assets/js/microapp.js"></script> -->
+    <script>
+        var Ayoba = getAyoba();
+        var AyobaProfileImage;
+        var AyobaNickName;
+        var fileResponseCode;
+        var filePath;
 
-    function finish() {
-        Ayoba.finish();
-    }
+        /**
+         * Determine the mobile operating system and returns the 
+         * proper javascript interface
+         */
+        function getAyoba() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-    function sendMessage() {
-        Ayoba.sendMessage(document.getElementById("inputText").value);
-        Ayoba.finish();
-    }
-
-    function composeMessage() {
-        Ayoba.composeMessage(document.getElementById("inputText").value);
-        Ayoba.finish();
-    }
-
-    function sendMedia() {
-        Ayoba.sendMedia('https://i.ytimg.com/vi/d5PP4vIX7P8/maxresdefault.jpg', 'image/jpg');
-    }
-
-    function sendLocation() {
-        Ayoba.sendLocation(document.getElementById("inputTextLat").value, document.getElementById("inputTextLon").value);
-    }
-
-    function getCountry() {
-        var country = Ayoba.getCountry();
-        document.getElementById("inputText").value = country
-        return country
-    }
-
-    function getMsisdn() {
-        var msisdn = Ayoba.getMsisdn();
-        document.getElementById("inputText").value = msisdn
-        return msisdn
-    }
-
-    function getCanSendMessage() {
-        var canSendMessage = Ayoba.getCanSendMessage();
-        document.getElementById("inputText").value = canSendMessage
-        return canSendMessage
-    }
-
-    function getLanguage() {
-        var language = Ayoba.getLanguage();
-        document.getElementById("inputText").value = language
-        return language
-    }
-
-    function getLastTextMessages() {
-        var test = Ayoba.getLastTextMessages();
-        document.getElementById("inputText").value = test
-        return test
-    }
-
-    function getURLParameter(sParam) {
-        var sPageURL = window.location.search.substring(1);
-        var sURLVariables = sPageURL.split('&');
-        for (var i = 0; i < sURLVariables.length; i++) {
-            var sParameterName = sURLVariables[i].split('=');
-            if (sParameterName[0] == sParam) {
-                return sParameterName[1];
+            // Windows Phone must come first because its UA also contains "Android"
+            if (/windows phone/i.test(userAgent)) {
+                return null;
             }
+
+            if (/android/i.test(userAgent)) {
+                return Android;
+            }
+
+            // iOS detection from: http://stackoverflow.com/a/9039885/177710
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                return null; // todo 
+            }
+
+            return "unknown";
         }
-    }
+    </script>
+    <script>
+        function onAvatarChanged(avatarPath) {
+            AyobaProfileImage = avatarPath
+        }
 
-    function getSelfJid() {
-        var selfJid = getURLParameter("jid")
-        document.getElementById("inputText").value = selfJid
-        return selfJid
-    }
+        function onNicknameChanged(nickname) {
+            AyobaNickName = nickname
+        }
 
-    function getContactJid() {
-        var contactJid = getURLParameter("contactjid")
-        document.getElementById("inputText").value = contactJid
-        return contactJid
-    }
 
-    function getContactName() {
-        var contactName = getURLParameter("contactname")
-        document.getElementById("inputText").value = contactName
-        return contactName
-    }
+        /*
+         * This method should be implemented to retrieve the "sendFileRetrievedResponse(...)" result
+         *
+         * @param {int} responseCode: result code
+         *  -1: the file could not be retrieved
+         *  1: the file has retrieved successfully
+         * @param {String} filePath: user selected files paths array
+         */
 
-    function getContacts() {
-        var contactsJson = Ayoba.getContacts();
-        document.getElementById("inputText").value = contactsJson
-        return contactsJson;
-    }
+        function onFileRetrievedResponse(responseCode, filePath) {
+            fileResponseCode = responseCode
+            filePath = filePath
+        }
+    </script>
 
-    /*
-     * The Ayoba native interface calls this method every time
-     * the app receives a new location event.
-     *
-     * Remember this listener will only be called when the native
-     * permission is accepted by the user.
-     *
-     * In some border cases, also can receive lat=0.0, lon=0.0. Most of
-     * cases, will mean Ayoba cannot retrieve the GPS coordinates.
-     */
-    function onLocationChanged(lat, lon) {
-        document.getElementById("locationInputText").value = lat.concat(", ").concat(lon)
-    }
 
-    /*
-     * The Ayoba native interface calls this method every time
-     * the user profile changes (nickname or avatar) : in chat context
-     */
-    function onProfileChanged(nickname, avatarPath) {
-        document.getElementById("nicknameInputText").value = nickname
-        document.getElementById("avatarImage").src = avatarPath
-    }
+    <app-root></app-root>
 
-    function onAvatarChanged(avatarPath) {
-        document.getElementById("avatarImage").src = avatarPath
-    }
+<script src="runtime.efa156907265b46c.js" type="module"></script><script src="polyfills.d78e189be8ac9c8f.js" type="module"></script><script src="scripts.6ff28f6030a351e2.js" defer></script><script src="main.e121b166cc4e3376.js" type="module"></script>
 
-    /*
-     * The Ayoba native interface calls this method every time
-     * the user nickname changes : in discovery context
-     */
-    function onNicknameChanged(nickname) {
-        document.getElementById("nicknameInputText").value = nickname
-    }
-
-    /*
-     * The Ayoba native interface calls this method every time
-     * the user presence changes (infact, always online)
-     */
-    function onPresenceChanged(presence) {
-        document.getElementById("presenceInputText").value = presence
-    }
-
-    /*
-     * This method should be implemented to retrieve the "sendMedia(...)" result
-     *
-     * @param {int} responseCode: result code
-     *  0: the location could not be sent
-     *  1: the location has been sent successfully
-     * @param encodedUrl: Base64 encoded media file’s url
-     */
-    function onMediaSentResponse(responseCode, encodedUrl) {
-        document.getElementById("inputText").value = responseCode.concat(" - ").concat(encodedUrl)
-        if (responseCode == 1) {Ayoba.finish()}
-    }
-
-    /*
-     * This method should be implemented to retrieve the "sendLocation(...)" result
-     *
-     * @param {int} responseCode: result code
-     *  0: the location could not be sent
-     *  1: the location has been sent successfully
-     */
-    function onLocationSentResponse(responseCode) {
-        document.getElementById("inputText").value = responseCode
-    }
-
-    function takePicture() {
-        var responseCode = Ayoba.takePicture();
-        return responseCode;
-    }
-
-    /*
-     * This method should be implemented to retrieve the "sendPicture(...)" result
-     *
-     * @param {int} responseCode: result code
-     *  0: the picture could not be taken
-     *  1: the picture has been taken successfully
-     */
-    function onPictureRetrievedResponse(responseCode, picturePath) {
-        document.getElementById("inputText").value = responseCode
-        document.getElementById("pictureRetrieved").src = picturePath
-    }
-
-    /*
-     * Starts a conversation with a user using his JID
-     */
-    function startConversation() {
-        Ayoba.startConversation('07aaf1be5b25b7c8c6a89159bc849e1d37ca7d1c@dev.ayoba.me');
-    }
-
-    function getFile() {
-        var responseCode = Ayoba.getFile();
-        return responseCode;
-    }
-
-    /*
-     * This method should be implemented to retrieve the "sendFileRetrievedResponse(...)" result
-     *
-     * @param {int} responseCode: result code
-     *  -1: the file could not be retrieved
-     *  1: the file has retrieved successfully
-     * @param {String} filePath: user selected files paths array
-     */
-    function onFileRetrievedResponse(responseCode, filePath) {
-        document.getElementById("inputText").value = responseCode.concat(" - ").concat(filePath)
-        document.getElementById("pictureRetrieved").src = filePath
-    }
-</script>
-
-<body style="background-color:#1565c0;">
-<center>
-    <font color="#ffc107">Example Micro App - Mid Screen</font>
-</center>
-<br />
-<div style="text-align:center;">
-    <input type="text" id="inputText">
-</div>
-<br />
-<div style="text-align:center;">
-    Location:
-    <input type="text" id="locationInputText">
-</div>
-<div style="text-align:center;">
-    Profile:
-    <input type="text" id="nicknameInputText">
-</div>
-<div style="text-align:center;">
-    Presence:
-    <input type="text" id="presenceInputText">
-</div>
-<img src="logo.png" style="width:72px;" />
-<br />
-<img style="width:72px;" id="avatarImage" />
-<br />
-<img style="width:72px;" id="pictureRetrieved" />
-<br />
-<div style="text-align:center;">
-    <input type="button" value="Send message" onClick="sendMessage()" />
-</div>
-<div style="text-align:center;">
-    <input type="button" value="Compose message" onClick="composeMessage()" />
-</div>
-<div style="text-align:center;">
-    <input type="button" value="Finish" onClick="finish()" />
-</div>
-<div style="text-align:center;">
-    <input type="button" value="Send media" onClick="sendMedia()" />
-</div>
-<div style="text-align:center;">
-    <input type="text" id="inputTextLat" size="10">
-    <input type="text" id="inputTextLon" size="10">
-    <input type="button" value="Send location" onClick="sendLocation()" />
-</div>
-<br />
-<div style="text-align:center;">
-    <input type="button" value="Get MSISDN" onClick="getMsisdn()" />
-</div>
-<div style="text-align:center;">
-    <input type="button" value="Get Country" onClick="getCountry()" />
-</div>
-<div style="text-align:center;">
-    <input type="button" value="Get SelfJid" onClick="getSelfJid()" />
-</div>
-<div style="text-align:center;">
-    <input type="button" value="Get ContactJid" onClick="getContactJid()" />
-</div>
-<div style="text-align:center;">
-    <input type="button" value="Get ContactName" onClick="getContactName()" />
-</div>
-<div style="text-align:center;">
-    <input type="button" value="Get CanSendMessage" onClick="getCanSendMessage()" />
-</div>
-<div style="text-align:center;">
-    <input type="button" value="Get Language" onClick="getLanguage()" />
-</div>
-<div style="text-align:center;">
-    <input type="button" value="Get Contacts" onClick="getContacts()" />
-</div>
-<div style="text-align:center;">
-    <input type="button" value="Get Last Text Messages" onClick="getLastTextMessages()" />
-</div>
-<div style="text-align:center;">
-    <input type="button" value="takePicture" onClick="takePicture()" />
-</div>
-<div style="text-align:center;">
-    <input type="button" value="startConversation" onClick="startConversation()" />
-</div>
-<div style="text-align:center;">
-    <input type="button" value="getFile" onClick="getFile()" />
-</div>
-</body>
-
-</html>
+</body></html>

@@ -1,0 +1,274 @@
+use App\model\User;
+
+class passportController extends Controller{
+
+//register users
+ public function register(Request $request){
+
+//validate form input
+  $this->validate($request,[
+ 	"name"=>"required|min:3",
+        "email"=>"required|email"
+        "password=> "required|min:6"
+]);
+
+// insert data into "User" table "name", "email", "password" columns
+
+ $user= User::create([
+ "name"=> $request->name,
+ "email"=>$request->email,
+//hash the password and insert it into db "password" column
+ "password"=>bcrypt($request->password)
+
+]);
+
+//Create a token for this user. Note= "JusticeApp" can be anything
+$token= $user->createToken("JusticeApp")->accessToken;
+
+//show response to the user after registration in json format. just show the token created above for him. the "200" is the server response gateway code like 404
+return response()->json(["token"=>$token],200);
+
+}
+
+// Login funcition
+
+public function login(Request $request){
+
+// grab the user email and password from the login form inpute into an array
+ $credentials =[
+   "email" => $request->email,
+   "password" => $request->password
+];
+
+//Check if the user email and passowrd is equal to what is in "user" table. The auth() function is created by laravel by defualt to authenticate the users table against the $credentials values passed into the attempt function (it checks if the values is equal to user values in db)
+
+if(Auth::attempt($credentials)){
+ //create a token for the login user
+ $token = auth()->user()createToken("JusticeApp")->accessToken;
+ //show the above token as a response to the user
+ return response()->json(["token"=>$token],200);
+}
+
+//If the user values is not equal to what is in user table. Show him an error message.
+
+else{
+return response()->json(["error"=>"Unauthorized"],401);
+}
+
+}
+
+// Get the login user Details
+
+public function deatails(){
+// return the authenticated information of the current login user
+ return response()->json(["user"=>auth()->user()],200);
+}
+
+}
+
+
+//product controller
+
+class productController extends Controller{
+
+// function to retrieve all product data if user is authenticated
+
+function index(){
+ $product =auth()->user()->product;
+
+ // return the above $product data in json format
+ return response()->json(["success"=>true, "data"=>$product],400);
+}
+
+// function to get single product if use is authenticated
+
+public function show($id){
+$product =auth()->user()->products()->find($id);
+
+// If product id not found...
+if(!$product){
+return response()->json([
+"success" => false,
+"messgae" => "product with id".$id."not found"
+],400);
+}
+
+
+// If product id found...
+else{
+return response()->json([
+"success" => true,
+"data" => $products->toArray()
+],400);
+}
+
+}
+
+// function to insert new product data to the db if user is authenticated
+
+public function store(Request $request){
+// validate the values the use want to insert into db
+ $this->validate($request,[
+"name" => "required",
+"price" => "required|integer"
+
+]);
+
+// Assign the validated values into product table colums
+$product = new Product();
+$product->name = $request->name;
+$product->price = $request->price;
+
+// if the user is authenticated, save the product and return a response
+if(auth()->user()->products()->save($product)) 
+  return response()->json(["success"=>true, "data"=>$products->toArray()],200);
+}
+
+// if user is not authenticated and product not saved..
+else{
+return response()->json(["success"=>false, "message"=>"product could not be saved"],500);
+}
+
+}
+
+//function to all user to update a single product if he is authenticated
+
+public function update(Request $request, $id){
+ //authenticate the user and find the product id
+$product =auth()->user()-products()-find($id);
+
+ // if product is not found, send the user a message
+if(!$product){
+return response()->json(["success"=>false, "message"=>"product with id".$id. "could not be found"],200);
+}
+
+//if product is found, update the product
+else{
+//update the product
+ $updated = $product->fill($request->all())->save();
+
+// send error response if product couldn't be updated
+ if(!$updated){
+    return response()->json(["success"=>false, "message"=>"product could not be updated"],500);
+}
+
+//if product is updated send success response
+
+else{
+return response()->json(["success"=>true, "message"=>"product updated successfully"],200);
+}
+
+}
+
+//Fuction to delete a specific product id
+
+function destroy($id){
+ //authenticate the user and find product id
+$product = auth()->user()->products()-find($id);
+
+//if product id not found send a message to user
+if(!product){
+ return response()->json(["success"=>false, "message"=>"product with id".$id. "could not be found"],200);
+}
+
+//if product id found
+else{
+
+// delete the product and return a message
+if($product->delete()){
+return response()->json(["success"=>true, "message"=>"product delated successfully"],200);
+}
+
+//use product couldn't be deleted return a error message
+else{
+return response()->json(["success"=>false, "message"=>"product could not be deleted"],200);
+}
+
+}
+
+
+}
+
+//class last cur bracket
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,70 @@
+SERVLET
+
+NOTE = To create any file for your project, just righ click on the project name and choose the type of project you wan to creat.
+
+* To create a SERVLET::
+create a java class and extend Servlet class. then create 2 public void method handle GET and Post Request. the method name should be doPost and do Get if not an error will happen.. example
+
+	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		
+		int num1 =Integer.parseInt( req.getParameter("num1"));
+		int num2 =Integer.parseInt( req.getParameter("num2"));
+		int sum = num1 + num2;
+		PrintWriter out = res.getWriter();
+		out.println("The sum is: " + sum);
+		
+	}
+	
+	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		PrintWriter out = res.getWriter();
+		out.println("get method executed");
+	} 
+
+How to map a form to specific Java sevelet class. Inside Webcontent->WEB-INF->web.xml:
+
+give your servlet a name and identify it class and then map a specific url to it. 
+
+  <servlet>
+    <servlet-name>addform</servlet-name>
+    <servlet-class>com.packagename.mysevlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>addform</servlet-name>
+    <url-pattern>/add</url-pattern>
+  </servlet-mapping>
+
+1.inside the servlet <servlet-name>, give any name you want to identify your servlet name. this is becuase you may have many servlet and each should be identified by a unique name
+
+2. inside the servlet  <servlet-class> tell your server where your class is. It should be in full-qualified-name that is (the package name + class name)
+
+3. inside the servlet-mapping  <servlet-name> tell your server which servlet you want to mapp a certain url to. (that is the name in servlet <servlet-name>)
+
+4. inside the servlet-mapping  <url-pattern> give a uniqe url to your servelet so that you can use that url in html.
+
+
+
+JSP
+
+
+
+
+IN JSP:::
+inside <%= %> is where you pring out a file to the screen. 
+<%= new java.util.Date() %>
+
+<% ...code %> === for adding many java code in it. if you want to output anything you use out.println();
+
+<%! ...code %> === fro varible declaration and methods. Then call such methods or variable in <%= ... %>
+
+
+
+(*)To import external java package to jsp file, before <html> add::
+<%@ page import="pakcagename.*"%>
+
+(*) To include any other files use::
+
+<jsp:include page="my-header.html" />
+
+<jsp:include page="my-footer.jsp" />
+ 

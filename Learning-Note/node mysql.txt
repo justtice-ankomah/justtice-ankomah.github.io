@@ -1,0 +1,26 @@
+npm install mysql
+===================== connection
+require mysql
+
+var createconnection =mystl.createconnection({
+user: 
+database:
+password:
+host:
+});
+
+
+createconnection.connect(function(err){
+
+// if errror
+});
+
+module.exports = createconnection
+=====================
+
+require("./createconnection")
+
+
+createconnection.query("select * from student", function(err){
+
+});

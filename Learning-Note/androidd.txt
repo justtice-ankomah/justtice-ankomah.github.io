@@ -1,0 +1,65 @@
+To surpport binding,
+
+implements the "OnBind" method and return the inner service class that extends binder class.
+
+@overide
+public IBinder onBind(Intent intent){
+   return binder;
+}
+
+// inner class in the service
+puplic class mybinder extend Binder{
+ myservice get(){
+   return myserservice.this;
+ }
+}
+
+public IBinder binder = new mybinder();
+
+IBinder, OnBind, Binder
+
+1. create a public inner class that extends Binder, and create a method in it that return the instance of the parent class (Service);
+
+2. create and Ibinder object of this inner class;
+
+3. return this Ibinder object in "onbind" method.
+
+
+Then..
+To bind to this service inside your mainactivity:::
+
+declare an object of your service class but don't assign anything to it. the key is to assign the instance of your service class to it in the "onServiceConnected" of the serviceconnection.
+
+Myservice myservice_obj; 
+
+Then setpup a service connection. Inside "onServiceConnected" cast the (IBinder service) to your service innerclass. Then use that object to  assign Myservice class instance to the myservice_obj above;
+
+
+    ServiceConnection serviceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            Myservice.mybinder mybinder_obj = (Myservice.mybinder) service;
+          myservice_obj = mybinder_obj.getService();
+          
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+         
+
+        }
+    };
+
+Now you have gotten an objct of your Myservice class that is "myservice_obj" You can now use it to retrive methods in the service
+
+======
+1. When an activity asks to bind to a service using a service connection, the connection calls the onBind() method of  the service
+
+2. an activity binds to a service using a ServiceConnection object. A ServiceConnection is an interface with two methods: onServiceConnected() and onServiceDisconnected(). 
+
+
+3,. The onServiceConnected() method is called when a connection to the service has been established and a Binder object is received from the service
+
+4. onServiceDisconnected() method is used when the connection to the service has been lost
+
+

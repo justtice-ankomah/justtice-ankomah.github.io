@@ -1,0 +1,100 @@
+
+
+(====) REACT STATE (====)
+
+State are use for setting component properties or varibles and objects.
+
+state = {name:justice,age=10,country:ghana};
+
+to change a state use "setState()" method. eg. this.setState({name:"ego"});
+
+Refer to the state object anywhere in the component by using the this.state.propertyName syntax:
+
+
+ JSX = JAVASCRIPT EXTENSION
+
+It helps you to write javascript inside html tags directly.
+
+Note::: Every javascript code must be within cury-braces { };
+
+Example:
+Class Bacon extends Component{
+
+ var numbers = [1, 2, 3, 4, 5, 6];
+
+render(){
+  return ( 
+<div>
+  {
+     numbers.map((myNumbers){
+return <p> { ((myNumbers)} </p>;
+}).toList();
+
+  } 
+</div> 
+ );    
+}
+
+}
+
+export defualt Bacon;
+
+
+(====) State management (====)
+
+
+Example 1:
+function App() {
+  const [colors, setColors] = useState("");
+
+return (
+  <div>
+
+/* when the buton is clicked update the useState() value which is "colors" */
+// whenever this button is clicked the value will change to "JUSTY"
+
+    <button onClick={(e)=>{ setColors("JUSTY");}} > click me </button>
+
+
+ /* set the useState() value which is "colors" to this element */
+    <p>{colors}</p>
+
+</div>
+);
+
+}
+
+export default App;
+
+Example 2:
+function App() {
+
+ // here useState() takes in an array, so "value" is an array. and 1,2,3,4 is the default value set to it
+ const [value, setValue] = useState([1,2,3,4]);
+
+return (
+   <div>
+    // When the button is clicked set this as the  useState() value which is "value"
+    <button onClick={function(e){setValue([value, 5]);}}>click me</button>
+
+        // loop through the  useState() value and set it to this element
+    <p>{value.map(function(e){return <span>{e}</span>;})}</p>
+</div>
+  );
+}
+
+
+export default App;
+
+
+
+
+===============React Developer Tools ============
+There is a chrome extension called "React Developer Tools" that helps you to see what is going on in your component rendring.
+Download that an use it for development.
+
+
+
+
+
+

@@ -1,0 +1,112 @@
+CURL ==>
+Is a php library for scrapping other website for data's
+
+Example: showing other peoples webiste in your site
+
+<?php
+$url = "https://google.com";
+
+//initialize the curl session
+$curl_handler = curl_init();
+
+//set the url you want to visit to CURLOPT_URL (REQUIED)
+curl_setopt($curl_handler, CURLOPT_URL, $url);
+
+//INCASE the website owner redirect the above url to different domain, follow that domain (OPTIONAL)
+curl_setopt($curl_handler, CURLOPT_FOLLOWLOCATION, true);
+
+//means store the result in a variable instead of automatically printing it in the browser.
+curl_setopt($curl_handler, CURLOPT_RETURNTRANSFER, true);
+
+//Amazon and other website uses https protocol protection. So you need to set the
+CURLOPT_SSL_VERIFYPEER to false. if not it will not work (OPTIONAL)
+curl_setopt($handler, CURLOPT_SSL_VERIFYPEER,false);
+
+//then set the response from the website to a vriable
+$response = curl_exec($curl_handler);
+
+//show the response on the screen
+echo ($response);
+
+// close curl to free system memory
+curl_close($curl_handler);
+
+==========================
+
+TO POST DATA TO THE SERVER
+
+//set the data you want to post in an array
+$data = array("name"=>"justice","age"=>31);
+
+// convert the above data to http query eg name=justice&age=31
+$string = http_build_query($data);
+
+// initiaze curl and set the url you want to post the data to
+$curl_handler = curl_init("https://gogole.com/data.php);
+
+//tell curl you want to post data
+curl_setopt($curl_handler, CURLOPT_POST,true);
+
+// tell curl the data you are passing to the url
+ curl_setopt($curl_handler,CURLOPT_POSTFIELDS,$string);
+
+ //tell curl to return the response into a variable not on the browser
+curl_setopt($curl_handler,CURLOPT_RETURNTRANSFER,true);
+
+//post the data
+curl_exec($curl_handler);
+
+//close curl to free memory when response is resceived
+curl_close($curl_handler);
+
+=============================================================
+To post a file to the server
+
+  $handler = curl_init();
+
+       //set the the tmp name, file type, and it name
+       $curl = new CURLFile($_FILES["myimage"]["tmp_name"], $_FILES["myimage"]["type"], $_FILES["myimage"]["name"]);
+
+       $url = "http://localhost/webscrap/postfile.php";
+
+       //set the data to an array
+       $data = array("imagefile" => $curl);
+
+       curl_setopt($handler, CURLOPT_URL, $url);
+       curl_setopt($handler, CURLOPT_RETURNTRANSFER, true);
+       curl_setopt($handler, CURLOPT_POST, true);
+
+       //set the data you want to send
+       curl_setopt($handler, CURLOPT_POSTFIELDS, $data);
+
+       $response = curl_exec($handler);
+
+       curl_close($handler);
+	   
+	   //this will post a file to the server which will be access with $_FILES["imagefile"]["tmp_name"]
+
+=========================================
+To scrap the web use simple_html_dom.php
+==========================================
+
+//download and include it 
+include("simple_html_dom.php");
+
+//set the url of the web you want to scrap
+$url = "http://localhost/blog/passiveincome.php";
+
+//grab the website into a variable
+$html = file_get_html($url);
+
+// Look for all h5 tages and display it
+foreach ($html->find('h5') as $article) {
+
+       echo ($article);
+//you can add plaintext, innertext and outertext to see some difference example
+  echo ($article->outertext);
+}
+
+
+
+
+

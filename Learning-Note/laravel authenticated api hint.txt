@@ -1,0 +1,5 @@
+If you want to use an authenticated api, the api owner will create a signup page for you to signup with your details on it own website. After the signup, he will also give you login page to login with your details to see if your details are correct in it own website. If your details are correct, the login page will generate a token for you to include it in all your request. The api webmaster will also have to show you all the api url you are authorize to make request to.
+
+all the access token will be saved in passport token tables in your db by default by laravel. Each token is associated with a specific registered user id. the webmaster can use this information to restrict the number of request a specific user should make per day. Or decide to block such user with that token.  
+
+You don't need to login everytime you want to access authenticated api. The api Owner will sign you up and log you in and give you an access token that you have to include in all your request. So if you want to fetch product details in your angular app, you simply go to the product url like api/getproduct and add your access token given to you by the api owner. 

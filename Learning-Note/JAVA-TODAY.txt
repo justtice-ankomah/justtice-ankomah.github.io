@@ -1,0 +1,59 @@
+Exception handling in java:::
+
+1. define a method that throws some execption.
+
+public void book() throws someException{
+  //exceptions goes here
+}
+
+Now any code that needs to use the above method "book()" needs to handle the exception. 
+The way we handle exception is by wrapping it in a try, catch, final block.
+
+try{
+   book();
+}
+catch(someException e){
+  system.out.println(e.stactTrace());
+}
+finally{
+system.out.println("i will execute no-matter what");
+}
+
+the "finally" is optional, is for executing code either error happends or not. 
+
+"TRY" means, thry this code "book()" if there is an error, execute the code in "catch". and if nothing happens move on don't execute "catch"
+
+"CATCH" means, run the code in "TRY" if only some error occur, catch it and execute the code in the "CATCH" block.
+
+"FINALLY" means, hei me i don't care, if error happen in try or not execute me. 
+
+=====================================================
+Java Json methods
+
+append(String key, Object value)
+Append values to the array under a key.
+
+getJSONObject(String key)
+Get the JSONObject value associated with a key.
+
+getJSONArray(String key)
+Get the JSONArray value associated with a key.
+
+getInt(String key)
+Get the int value associated with a key.
+
+getString(String key)
+Get the string associated with a key.
+
+has(String key)
+Determine if the JSONObject contains a specific key.
+
+ 	length()
+Get the number of keys stored in the JSONObject.
+
+toString()
+Make a JSON text of this JSONObject.
+
+put(string key, string value);
+put data to jsonObject 
+

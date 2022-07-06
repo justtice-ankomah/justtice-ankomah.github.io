@@ -1,3 +1,0 @@
-To find different kind of free API  for developers == https://apilist.fun/  
-
-API to find the lyrics of a song === https://lyricsovh.docs.apiary.io/#reference/0/lyrics-of-a-song/search

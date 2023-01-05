@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60">
+  <g id="MDI_seal" data-name="MDI / seal" transform="translate(-0.052 -0.05)">
+    <g id="Boundary" transform="translate(0.052 0.05)" fill="#fff" stroke="rgba(0,0,0,0)" stroke-width="1" opacity="0">
+      <rect width="60" height="60" stroke="none"/>
+      <rect x="0.5" y="0.5" width="59" height="59" fill="none"/>
+    </g>
+    <path id="Path_seal" data-name="Path / seal" d="M45.63,45.5,35.588,42.066,32.132,52.083,24.42,37.058,17.107,52.083,13.652,42.066,3.61,45.5l7.312-15.025a17.529,17.529,0,1,1,27.4,0L45.63,45.5M12.1,19.529l6.736,3.356L18.359,30.4l6.26-4.157,6.26,4.132-.426-7.487,6.686-3.356-6.711-3.381.451-7.462-6.26,4.107-6.26-4.157.426,7.538Z" transform="translate(6.401 3.008)" fill="#fff"/>
+  </g>
+</svg>
